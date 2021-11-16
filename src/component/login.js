@@ -10,7 +10,7 @@ function Login() {
       username: username,
       password: password,
     };
-    fetch("http://localhost:3001/user/login" || `https://radiant-shore-82905.herokuapp.com/user/login`, {
+    fetch(`https://radiant-shore-82905.herokuapp.com/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
