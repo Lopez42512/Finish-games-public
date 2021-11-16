@@ -13,6 +13,7 @@ function Login() {
     fetch(`https://radiant-shore-82905.herokuapp.com/user/login`, {
       method: "POST",
       headers: {
+        "access-control-allow-origin" : "*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
