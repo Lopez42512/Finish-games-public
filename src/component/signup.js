@@ -15,7 +15,7 @@ function Signup() {
     };
     console.log(data);
     try {
-      fetch(`http://localhost:3001/user/signup`, {
+      fetch(`https://radiant-shore-82905.herokuapp.com//user/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ function Signup() {
           console.log(response);
           if (response === "user created") {
             setCreatedUser(false)
-            window.location.href = "http://localhost:3000";
+            window.location.href = "https://secret-refuge-52878.herokuapp.com/";
           } else {
               setCreatedUser(true)
           }
