@@ -9,7 +9,6 @@ function App() {
   // get all the games from the server to populate the game cards
   useEffect(() => {
     
-    console.log(id)
     try {
       fetch(`http://localhost:3001/games/${id}` || `https://radiant-shore-82905.herokuapp.com/games/${id}`)
         .then((res) => res.json())
@@ -43,6 +42,7 @@ function App() {
   }
   // map through all the games that where pulled from the server and create a card for each
   const renderGame = game.map((game) => {
+    console.log(game)
     return (
       <div key={game._id}>
         {game.image ? <img src={game.image} alt='no' style={{width:'100px', height:'100px'}}/>: <div></div>}

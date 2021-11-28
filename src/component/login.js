@@ -10,20 +10,28 @@ function Login() {
       username: username,
       password: password,
     };
-    fetch(`https://radiant-shore-82905.herokuapp.com/user/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `http://localhost:3001/user/login` ||
+        `https://radiant-shore-82905.herokuapp.com/user/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((response) => {
         if (response) {
           const { _id } = response;
-          window.location.href = `http://localhost:3000/user/${_id}` || `https://radiant-shore-82905.herokuapp.com/user/${_id}`;
+          window.location.href =
+            `http://localhost:3000/user/${_id}` ||
+            `https://radiant-shore-82905.herokuapp.com/user/${_id}`;
         } else {
-          window.location.href = `http://localhost:3000/` || `https://radiant-shore-82905.herokuapp.com`;
+          window.location.href =
+            `http://localhost:3000/` ||
+            `https://radiant-shore-82905.herokuapp.com`;
         }
       });
   };
@@ -38,23 +46,40 @@ function Login() {
         setPassword(password + data);
         break;
       default:
-        console.log("nani");
+        console.log("nani"); 
         break;
     }
   };
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>UserName</label>
-        <input name="username" value={username} onChange={handleChange} />
-        <br />
-        <label>Password</label>
-        <input name="password" value={password} onChange={handleChange} />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
-      <a href="/signup">Signup</a>
+    <div className="main">
+      <div className="login">
+        <div className="background"></div>
+        <h1 className="formHeader">Login</h1>
+        <form className="loginForm" onSubmit={handleSubmit}>
+          <h5>UserName</h5>
+          <input
+            name="username"
+            value={username}
+            onChange={handleChange}
+            placeholder="Type your username"
+          />
+          <br />
+          <h5>Password</h5>
+          <input
+            name="password"
+            value={password}
+            onChange={handleChange}
+            placeholder="Type your password"
+          />
+          <br />
+          <button type="submit" value="Submit">
+            Login
+          </button>
+          <button className="anchorContainer">
+            <a href="/signup">Signup</a>
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
