@@ -47,13 +47,13 @@ function Signup() {
     const { name } = e.target;
     switch (name) {
       case "email":
-        setEmail(email + data);
+        data == null ? setEmail(email.slice(0,-1)) : setEmail(email + data);
         break;
       case "username":
-        setUsername(username + data);
+        data == null ? setUsername(username.slice(0,-1)) : setUsername(username + data);
         break;
       case "password":
-        setPassword(password + data);
+        data == null ? setPassword(password.slice(0,-1)) : setPassword(password + data);
         break;
       default:
         console.log("nani");
