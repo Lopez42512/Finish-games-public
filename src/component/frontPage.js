@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Header from "./component/header";
-import './assets/css/app.css'
 // import Login from './component/login';
 // import Signup from './component/signup';
 
-function App() {
+function FrontPage() {
   const [game, setGame] = useState([]);
   const { id } = useParams();
   // get all the games from the server to populate the game cards
@@ -50,12 +48,14 @@ function App() {
   };
   // map through all the games that where pulled from the server and create a card for each
   const renderGame = game.map((game) => {
+    console.log(game);
     return (
-      <div className="gameCards" key={game._id}>
+      <div key={game._id}>
         {game.image ? (
           <img
             src={game.image}
             alt="no"
+            style={{ width: "100px", height: "100px" }}
           />
         ) : (
           <div></div>
@@ -69,19 +69,22 @@ function App() {
       </div>
     );
   });
-  console.log(renderGame)
-  renderGame ? renderGame.reverse() : <div></div>
   return (
-    <div className="appContainer">
-      <Header />
-      
+    <div className="main">
+      <a
+        href={
+          "http://localhost:3000" ||
+          `https://radiant-shore-82905.herokuapp.com/`
+        }
+      >
+        Log out
+      </a>
       <form
         action={
           `http://localhost:3001/games/${id}` ||
           `https://radiant-shore-82905.herokuapp.com/games/${id}`
         }
         method="post"
-        id="formContainer"
       >
         <label htmlFor="fname">Game Name</label>
         <input type="text" id="fname" name="name" />
@@ -96,4 +99,4 @@ function App() {
   );
 }
 
-export default App;
+export default FrontPage;

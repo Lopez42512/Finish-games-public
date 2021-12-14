@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import Login from "./component/login";
 import Signup from "./component/signup";
+import FrontPage from "./component/frontPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
